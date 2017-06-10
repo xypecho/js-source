@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script type="text/javascript" src="jquery-3.2.1.min.js"></script>
+</head>
+<body>
+ <div style="width: 100px;height: 100px;background: #ccc">
+ 	<span>hello world</span>
+ </div>
+</body>
+<script type="text/javascript">
+	 i=0;
+	$("div").click(function(){
+		if (i%2==0) {
+			$("div").css({"background":"red"})
+		} else {
+			$("div").css({"background":"#ccc"})
+		}
+		i++;
+	});
+</script>
+</html>
