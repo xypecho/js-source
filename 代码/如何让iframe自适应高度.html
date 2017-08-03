@@ -1,0 +1,36 @@
+如何让iframe自适应高度
+
+<div class="am-tab-panel">
+ <iframe name="iFrame1" src="'+frame_url+'" frameborder="0" scrolling="no" style="width:100%;border:1px solid #fff" onload="setIframeHeight(this)" id="frame" height="922" onLoad="IframeLoadEND();"> ' 
+                 </iframe>
+</div>
+
+<script type="text/javascript">
+
+  //定时器定时计算iframe高度
+function reinitIframe(){  
+var iframe = document.getElementById("frame");  
+try{  
+    var bHeight = iframe.contentWindow.document.body.scrollHeight;  
+    var dHeight = iframe.contentWindow.document.documentElement.scrollHeight;  
+    var height = Math.max(bHeight, dHeight);  
+    iframe.height = height;  
+}catch (ex){}  
+}  
+  
+var timer1 = window.setInterval("reinitIframe()", 5); 
+  
+function IframeLoadEND(){  
+var iframe = document.getElementById("frame");  
+try{  
+    window.clearInterval(timer1);  
+    var bHeight = iframe.contentWindow.document.body.scrollHeight;  
+    var dHeight = iframe.contentWindow.document.documentElement.scrollHeight;  
+    var height = Math.max(bHeight, dHeight);  
+    iframe.height = height;  
+}catch (ex){}  
+    window.clearInterval(timer1);  
+  
+}  
+
+</script>
