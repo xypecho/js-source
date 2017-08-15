@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<input type="text" name="mainpricecal">
+</body>
+	<script type="text/javascript">
+			$("input[name='mainpricecal']").keyup(function(){
+			var mainpricecal=$(this).val();
+			var house_sn = $(".house_sn").val();
+			var initial_price = $(".initial_price").val();
+			var total_expenditure = $(".total_expenditure").val();
+			$.post("{:url('Application/getPersonalexpenses')}",{mainpricecal:mainpricecal,house_sn:house_sn,initial_price:initial_price,total_expenditure:total_expenditure},function(res){
+				$(".money").val(res);
+			})
+	})
+	</script>
+</html>
