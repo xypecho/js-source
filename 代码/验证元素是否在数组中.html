@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>维修资金管理系统姜堰区2017v1.01</title>
+		<meta name="description" content="维修资金管理系统姜堰区2017v1.01">
+		<meta name="keywords" content="index">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="Cache-Control" content="no-siteapp" />
+		<link rel="icon" type="image/png" href="/public/static/i/favicon.png">
+		<link rel="apple-touch-icon-precomposed" href="/public/static/i/app-icon72x72@2x.png">
+		<meta name="apple-mobile-web-app-title" content="Amaze UI" />
+		<link rel="stylesheet" href="/public/static/css/amazeui.min.css" />
+		<link rel="stylesheet" href="/public/static/css/amazeui.datatables.min.css" />
+		<link rel="stylesheet" href="/public/static/css/app.css">
+		<script src="/public/static/js/jquery.min.js"></script>
+	</head>
+	<body data-type="index">
+		<div class="tpl-content-wrapper">
+			<div class="row-content am-cf">
+				<div class="row">
+					<div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
+						<div class="widget am-cf">
+							
+								<div class="widget-head am-cf">
+									<div class="widget-title am-fl">新增工单权限1</div>
+										<button style="border: 0px;border-radius: 3px;background: #4db14d;color: #fff;float: right;" type="button" id="return_back" class="am-btn am-btn-success am-radius"><i class="am-icon-reply"></i>&nbsp;返回</button>
+								</div>
+								
+							<form class="am-form tpl-form-border-form tpl-form-border-br addform" action="{:url('workorder/addform')}" >
+							<input type="hidden" name="addid" class="addid" value="{$addid}">
+								<div class="widget-body am-fr">
+								<if condition="$addid eq ''">
+									<div class="am-form-group">
+										<label for="user-name" class="am-u-sm-2 am-form-label  am-text-right">工单名称1 </label>
+										<div class="am-u-sm-3 am-u-end">
+											<input type="text" class="tpl-form-input" name="wk_name" placeholder="" id="auth_name" value="">
+											<small style="color: red" id="message0">请填写工单名称1。</small>
+										</div>
+									</div>
+									<div class="am-form-group">
+										<label for="user-intro" class="am-u-sm-2 am-form-label  am-text-right">是否开启1</label>
+										<div class="am-u-sm-3 am-u-end">
+											<div class="tpl-switch">
+												<input type="checkbox" id="disabled" name="disabled" class="ios-switch bigswitch tpl-switch-btn am-margin-top-xs" value="0" checked="">
+												<div class="tpl-switch-btn-view">
+													<div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								<else />
+									<div class="am-form-group">
+										<label for="user-name" class="am-u-sm-2 am-form-label am-text-right">所属角色组2</label>
+										<div class="am-u-sm-3 am-u-end approve">
+											<select name="class_id" id="class_id" data-am-selected="{maxHeight: 150}">
+												<option class="" id="" value=""></option>
+												<volist name="approve_type" id="vo">
+													<option class="approve_type" id="{$vo.id}" value="{$vo.id}">{$vo.class_name}</option>
+												</volist>
+											</select>
+										</div>
+										<!-- 物业的开始 -->
+										<div class="am-u-sm-3 am-u-end smallreal" style="display:none">
+											<select name="class_id" id="class_id" data-am-selected="{maxHeight: 150}">
+												<option value=""></option>
+												<option value="34">物业公司管理组</option>
+											</select>
+											<input type="hidden" name="realgroupid" class="realgroupid" value="34">
+										</div>
+										<!-- 物业的结束 -->
+										<!-- 中心组的开始 -->
+										<div class="am-u-sm-3 am-u-end smallcentergroup" style="display:none">
+											<select name="class_id" id="class_id" data-am-selected="{maxHeight: 150}">
+												<option class="" id="" value=""></option>
+												<volist name="centergroup" id="vo">
+													<option class="centergroup" id="{$vo.id}" value="{$vo.id}">{$vo.user_name}</option>
+												</volist>
+											</select>
+											<input type="hidden" name="centergroupid" class="centergroupid" value="{$centergroup[0]['groupid']}">
+										</div>
+										<!-- 中心组的结束 -->
+										<!-- 个人的开始 -->
+										<div class="am-u-sm-3 am-u-end smallpeoplegroup" style="display:none">
+											<select name="class_id" id="class_id" data-am-selected="{maxHeight: 150}">
+												<option class="" id="" value=""></option>
+												<volist name="peoplegroup" id="vo">
+													<option class="peoplegroup" id="{$vo.id}" value="{$vo.id}">{$vo.user_name}</option>
+												</volist>
+											</select>
+											<input type="hidden" name="peoplegroupid" class="peoplegroupid" value="">
+										</div>
+										<!-- 个人的结束 -->
+										<!-- 初审组的开始 -->
+										<div class="am-u-sm-3 am-u-end smallfirstgroup" style="display:none">
+											<select name="class_id" id="class_id" data-am-selected="{maxHeight: 150}">
+												<option class="" id="" value=""></option>
+												<volist name="firstgroup" id="vo">
+													<option class="firstgroup" id="{$vo.id}" value="{$vo.id}">{$vo.user_name}</option>
+												</volist>
+											</select>
+											<input type="hidden" name="firstgroupid" class="firstgroupid" value="{$firstgroup[0]['groupid']}">
+										</div>
+										<!-- 初审组的结束 -->
+										<!-- 审核组的开始 -->
+										<div class="am-u-sm-3 am-u-end smallaudit" style="display:none">
+											<select name="class_id" id="class_id" data-am-selected="{maxHeight: 150}">
+												<option class="" id="" value=""></option>
+												<volist name="audit" id="vo">
+													<option class="audit " id="{$vo.id}" value="{$vo.id}">{$vo.user_name}</option>
+												</volist>
+											</select>
+											<input type="hidden" name="auditid" class="auditid" value="{$audit[0]['groupid']}">
+										</div>
+										<!-- 审核组的结束 -->
+										<!-- 审定组的开始 -->
+										<div class="am-u-sm-3 am-u-end smallauthorize" style="display:none">
+											<select name="class_id" id="class_id" data-am-selected="{maxHeight: 150}">
+												<option class="" id="" value=""></option>
+												<volist name="authorize" id="vo">
+													<option class="authorize " id="{$vo.id}" value="{$vo.id}">{$vo.user_name}</option>
+												</volist>
+											</select>
+											<input type="hidden" name="authorizeid" class="authorizeid" value="{$authorize[0]['groupid']}">
+										</div>
+										<!-- 审定组的结束 -->
+									</div>
+									<div class="am-u-sm-12">
+										<table width="100%" class="am-table am-table-bordered am-table-radius am-table-compact am-table-striped tpl-table-black " id="example-r">
+											<thead>
+												<tr style="width:60%">
+													<th style="width:20%">权限名称</th>
+													<th style="width:20%">层级</th>
+													<th style="width:20%">操作</th>
+												</tr>
+											</thead>
+											<tbody id="search_questions_rel">
+												<volist name="userinfo" id="vo">
+													<if condition="$vo.approve_user neq 0">
+														<tr style="text-align:center" class="ifuserid gradeX" ifuserid="{$vo.approve_user}">
+													<else />
+														<tr style="text-align:center" class="ifuserid gradeX" ifuserid="{$vo.dept_id}">
+													</if>
+													<input type="hidden" name="dept_id[]" class="dept_id" value="{$vo.dept_id}">
+													<input type="hidden" name="approve_user[]" class="approve_user" value="{$vo.approve_user}">
+													<input type="hidden" name="approve_name[]" class="approve_name" value="{$vo.approve_name}">
+													<input type="hidden" name="leval[]" class="leval" value="{$vo.leval}">
+													<input type="hidden" name="approve_type[]" class="approve_type" value="{$vo.approve_type}">
+													<td>{$vo.approve_name}</td>
+													<td>{$vo.leval}</td>
+													<td>
+														<div class='tpl-table-black-operation'>
+															<a href="javascript:;" real_id="" class="tpl-table-black-operation-del" onclick="alldel(this)">
+																<i class="am-icon-trash"></i> 删除
+															</a>
+														</div>
+													</td>
+													</tr>
+												</volist>
+											</tbody>
+										</table>
+									</div>
+								</if>
+								<if condition="$addid eq ''">
+									<div class="am-form-group">
+										<label for="user-intro" class="am-u-sm-2 am-form-label  am-text-right"></label>
+										<div class="am-u-sm-10 am-u-end">
+											<input type="submit" class="am-btn am-btn-primary tpl-btn-bg-color-success "></input>
+										</div>
+									</div>
+								<else />
+									<div class="am-form-group">
+										<label for="user-intro" class="am-u-sm-2 am-form-label  am-text-right"></label>
+										<div class="am-u-sm-10 am-u-end">
+											<button class="am-btn am-btn-primary tpl-btn-bg-color-success commit">提交</button>
+										</div>
+									</div>
+								</if>
+							</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		
+	</body>
+	<script>
+<script type="text/javascript">
+				$("input").keyup(function(){
+				var input_val=$(this).val();
+				var arr8= new Array();  //新建数组用来放元素
+					$("#example-r").find("td").each(function(){
+						var td_val=$(this).text();
+						arr8.push(td_val);  //把遍历的值放数组里面
+					});
+				var aeIndex = $.inArray(input_val,arr8);
+				 if(aeIndex != "-1"){
+ 				alert("请输入不同的层级");return false;
+  }else if (input_val==0) {
+  		alert("请输入非0整数");return false;
+  }
+			}) 
+	</script>
+	</script>
+
+
+
+</html>

@@ -3,19 +3,25 @@
 <head>
 	<meta charset="UTF-8">
 	<title></title>
+	<script type="text/javascript" src="jquery-3.2.1.min.js"></script>
+	<style type="text/css">
+		.md{
+			position: absolute;
+			top:50%;
+			left:50%;
+			width: 100px;
+			height:100px;
+			background: red;
+			margin-top:-$(this).height()/2;
+			margin-left:-$(this).width()/2;
+		}
+	</style>
 </head>
-<body>
-	<input type="text" name="mainpricecal">
+<body style="position:fixed;">
+	<div class="md"></div>
 </body>
-	<script type="text/javascript">
-			$("input[name='mainpricecal']").keyup(function(){
-			var mainpricecal=$(this).val();
-			var house_sn = $(".house_sn").val();
-			var initial_price = $(".initial_price").val();
-			var total_expenditure = $(".total_expenditure").val();
-			$.post("{:url('Application/getPersonalexpenses')}",{mainpricecal:mainpricecal,house_sn:house_sn,initial_price:initial_price,total_expenditure:total_expenditure},function(res){
-				$(".money").val(res);
-			})
-	})
-	</script>
+<!-- <script type="text/javascript">
+	$(".md").css({"marginTop":-$(this).height()/2});
+	$(".md").css({"marginLeft":-$(this).width()/2});
+</script> -->
 </html>

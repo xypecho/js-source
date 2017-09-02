@@ -1,0 +1,9 @@
+function getFileName(o){//通过第一种方式获取文件名
+    var pos=o.lastIndexOf("\\");//查找最后一个\的位置
+    return o.substring(pos+1); //截取最后一个\位置到字符长度，也就是截取文件名 
+}
+ 
+function getFileName2(o){//通过第二种方式获取文件名
+    var arr = o.split('\\');//通过\分隔字符串，成字符串数组
+    return arr[arr.length-1];//取最后一个，就是文件名
+}

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<input type="" name="" class="phone" onblur="checkPhone()">
+</body>
+	<script type="text/javascript">
+		function checkPhone(){ 
+    var phone =$(".phone").val();
+    if(!(/^1(3|4|5|7|8)\d{9}$/ig.test(phone))){ 
+      alert("手机号码有误，请重填");
+        return false; 
+    }
+}
+	</script>
+</html>
