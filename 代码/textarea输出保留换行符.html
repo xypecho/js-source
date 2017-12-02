@@ -1,0 +1,15 @@
+1.需要保存数据库之前把textarea中的换行字符转换为<br>存储到数据库。  
+2当读取的时候在把<br> 替换成textarea的换行符\n就好了  
+注意：使用replace 方法的时候需要用正则表达式，否则只能替换第一个换行  
+  
+例如：  
+str="你好啊：  
+   亲爱的:  
+1.存储数据库之前执行  
+dbstr =  str.replace(/\n|\r\n/g,"<br>");  
+  
+2.取值的时候用正则表达式：  
+var reg=new RegExp("<br>","g"); //创建正则RegExp对象    
+var newstr=remContent.replace(reg,"\n");     
+  
+3.把newstr 显示在textarea后  
